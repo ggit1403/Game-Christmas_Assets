@@ -378,7 +378,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.750329
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 1819406347}
   - component: {fileID: 1819406346}
   m_Layer: 0
-  m_Name: ong-gia-noel-cuoi-tuan-loc-rat-quen-thuoc-nhung-van-rat-duoc-khach-hang-lua-chon-11-4ad8b8c6b0de6ebeab6f6cf1d424f437
+  m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     void Start()
     {
          rb = GetComponent<Rigidbody2D>();
-
+      
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -65,6 +65,10 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(SwitchMap(0.2f, "onGround"));  // va cham voi diem chuyen Map
 
+        }
+        else if(other.gameObject.CompareTag("gift"))
+        {
+            other.gameObject.SetActive(false);
         }
 
     }

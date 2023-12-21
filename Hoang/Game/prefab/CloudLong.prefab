@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4400994057625565255}
   - component: {fileID: 4400994057625565249}
   - component: {fileID: 4400994057625565254}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CloudLong
   m_TagString: cloud
   m_Icon: {fileID: 0}
@@ -146,4 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59d3381fe51c604780349298f24a812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 120
+  distance: 0

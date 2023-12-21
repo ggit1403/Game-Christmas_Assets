@@ -15,6 +15,7 @@ public class objectPool : MonoBehaviour
     public Transform Cam;
     public bool changePos;
     public bool OT;
+    public int count;
     void Start()
     {
         GameObject[] allObjects = GameObject.FindGameObjectsWithTag("cloud");
@@ -25,55 +26,75 @@ public class objectPool : MonoBehaviour
             objects.Add(obj);
         }
     }
+    private void Update()
+    {
+       
+        for (int i = 0; i < objects.Count; i++)
+        {
 
+            if (!objects[i].activeSelf)
+            {
+               
+                if (!inactiveObjects.Contains(objects[i]))
+                {
+                    inactiveObjects.Add(objects[i]);
+                }
+            }
+        }
+    
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
-        pool();
-        Move();
-        if(player== null)
+        if (player == null)
         {
             player = GameObject.FindWithTag("Player");
-   
+
         }
-       
+        else
+        {
+            for (int i = 0; i < objects.Count; i++)
+            {
+                if (objects[i].activeSelf)
+                {
+                    count++;
+                }
+                else
+                {
+                    count--;
+                }
+            }
+            if (count == 0)
+            {
+                inactiveObjects[1].SetActive(true);
+                inactiveObjects[1].transform.position = new Vector2(transform.position.x + 2, 0);
+            }
+
+        }
+
+
+        pool();
+        Move();
+
     }
 
     private void Move()
     {
         float distanceX = Mathf.Abs(player.transform.position.x - transform.position.x);
 
-        if (distanceX <= 8)
+        if (distanceX <= 15)
         {
-            transform.position = new Vector2(transform.position.x + 8, transform.position.y);
+            transform.position = new Vector2(transform.position.x + 5, transform.position.y);
         }
     }
+
 
     void pool()
     {
         float distanceX = Mathf.Abs(player.transform.position.x - transform.position.x);
-        for (int i = 0; i < objects.Count; i++)
-        {
-            float distance = Mathf.Abs(player.transform.position.x - objects[i].transform.position.x);
-
-            if (distance > 30f)
-            {
-                objects[i].SetActive(false);
-                changePos = true;
-                OT = true;
-                if (objects[i].gameObject.activeSelf == false)
-                {
-                    if (!inactiveObjects.Contains(objects[i]))
-                    {
-                        inactiveObjects.Add(objects[i]);
-                    }
-                }
-
-            }
-
-
-        }
-        if (distanceX <= 8f)
+        changePos = true;
+        OT = true;
+        if (distanceX <= 15f)
         {
 
             if (OT)
@@ -97,7 +118,7 @@ public class objectPool : MonoBehaviour
             // Kích hoạt đối tượng tại chỉ số được chọn
             GameObject activatedObject = objectsToActivate[randomIndex];
             activatedObject.SetActive(true);
-
+           
 
             // Nếu cần thay đổi vị trí, hãy di chuyển nó
             if (changePos)

@@ -84,14 +84,14 @@ public class PlayerMoveOnSky : MonoBehaviour
             {
                 rb.gravityScale = 0.1f; // nhan A de giam toc do roi
                 
-            }
+            }           
             else
             {
                 if (!switchMap)
                 {
                     rb.gravityScale = 1f;
                 }
-           }
+            }
             if ( rb.velocity.y < 0)
             {
                 cam.GetComponent<CamFollow>().speed = 0.8f;
@@ -126,7 +126,7 @@ public class PlayerMoveOnSky : MonoBehaviour
   
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("cloud"))
+        if (collision.gameObject.CompareTag("cloud")|| collision.gameObject.CompareTag("Ground"))
         {
             canjump = true;
            
@@ -134,7 +134,7 @@ public class PlayerMoveOnSky : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("cloud"))
+        if (collision.gameObject.CompareTag("cloud") || collision.gameObject.CompareTag("Ground"))
         {
             canjump = false;
             

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -8,13 +8,13 @@ public class MoveOnGround : MonoBehaviour
     // Start is called before the first frame update
     public float speed = 10;
     public float jumpForce = 5000;
-    public float gravityScale = 0.5f;
-    private bool _isJumping = false;
+    public float gravityScale;
+   /* private bool _isJumping = false;*/
     private bool _isJumped = false;
     private bool _isOnGround = false;
     public bool moving = true;
     public bool switchMap = false;
-    GameObject switchPos;
+   
   
     Rigidbody2D rb;
     void Start()
@@ -33,25 +33,24 @@ public class MoveOnGround : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (switchPos == null)
-        {
-            switchPos = GameObject.FindWithTag("switchPos");
-           
-        }
-        else
-        {
-            if (switchMap)
+        
+           if (switchMap)
             {
-                switchPos.GetComponent<CamFollow>().enabled = false;
-            
+            // Tính toán vectơ di chuyển dựa trên Vector2.up và tốc độ di chuyển
+            Vector3 moveDirection = Vector2.up * moveSpeed * Time.deltaTime;
+
+            // Di chuyển đối tượng lên trên theo vectơ di chuyển
+            transform.Translate(moveDirection);
+
+            rb.gravityScale = 0;
+      
+             
             }
             else
             {
                 rb.gravityScale = 1;
-                
-                switchPos.GetComponent<CamFollow>().enabled = true;
             }
-        }
+        
         
 
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -79,26 +78,9 @@ public class MoveOnGround : MonoBehaviour
 
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
 
-            _isJumping = true;
+           /* _isJumping = true;*/
             _isJumped = true;
         }
-
-        if (_isJumping)
-        {
-            GetComponent<Rigidbody2D>().gravityScale = gravityScale * (1 - Time.fixedDeltaTime);
-        }
-        else
-        {
-            GetComponent<Rigidbody2D>().gravityScale = gravityScale;
-        }
-
-       
-       
-
-
-
-
-
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -106,27 +88,29 @@ public class MoveOnGround : MonoBehaviour
         {
             _isOnGround = true;
             _isJumped = false;
-            
+           
         }
     }
     void OnTriggerEnter2D(UnityEngine.Collider2D other )
     {
         if (other.gameObject.CompareTag("reindeer"))
         {
-           
+
             switchMap = true;
-            moving = true;
-            rb.AddForce(Vector2.up * 6, ForceMode2D.Impulse);
+            moving = false;
+            
+           
+            
         }
-    }
-    void OnTriggerExit2D(UnityEngine.Collider2D other)
-    {
-        if (other.gameObject.CompareTag("reindeer"))
+        else if (other.gameObject.CompareTag("switchZone"))
         {
+
             switchMap = false;
             moving = true;
+
         }
     }
+  
 
 
 }

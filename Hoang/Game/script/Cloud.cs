@@ -10,7 +10,7 @@ public class Cloud : MonoBehaviour
     private Rigidbody2D rb;
     GameObject cam;
     public float distance;
-   
+    public GameObject startPos;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,29 +18,24 @@ public class Cloud : MonoBehaviour
     }
     private void Update()
     {
-         
+         if(startPos == null)
+        {
+            startPos = GameObject.FindWithTag("startPos");
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (cam == null)
-        {
-            cam = GameObject.FindWithTag("MainCamera");
-        }
-        else
-        {
-            distance = Mathf.Abs(cam.transform.position.x - transform.position.x);
-
-            if (distance > 30f)
-            {
-                this.gameObject.SetActive(false);
-
-            }
-        }
 
         rb.velocity = Vector2.left * speed * Time.fixedDeltaTime;
 
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("endPos")) {
+            transform.position = startPos.transform.position;
+        }
     }
 }
 

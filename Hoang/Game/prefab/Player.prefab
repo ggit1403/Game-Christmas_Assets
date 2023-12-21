@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5353734204170830285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.58, y: 7.89, z: 0.18190153}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5353734204517188832}
@@ -89,9 +89,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 10
   score: 100
-  switchMap: 0
   moveSpeed: 0
-  swPos: {fileID: 0}
+  pos: {fileID: 0}
 --- !u!114 &5353734204170830295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +127,7 @@ MonoBehaviour:
   jumpForce: 200
   gravityScale: 1
   moving: 0
+  switchMap: 0
   moveSpeed: 5
 --- !u!114 &4405073420158118933
 MonoBehaviour:
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInOnGroundScene: 0
+  pos: {fileID: 0}
 --- !u!1 &5353734204517188764
 GameObject:
   m_ObjectHideFlags: 0

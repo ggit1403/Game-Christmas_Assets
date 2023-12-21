@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         {
             score += 1;
         }
-        else if (other.gameObject.CompareTag("switchPos"))
+        else if (other.gameObject.CompareTag("switch"))
         { 
             StartCoroutine(SwitchMap(0.2f,"onSky"));
             
@@ -69,6 +69,11 @@ public class Player : MonoBehaviour
         else if(other.gameObject.CompareTag("gift"))
         {
             other.gameObject.SetActive(false);
+            score += 1;
+        }
+        else if (other.gameObject.CompareTag("gift"))
+        {
+            HP -= 1;
         }
 
     }

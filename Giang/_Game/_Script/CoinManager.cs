@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Cloud : MonoBehaviour
+public class CoinManager : MonoBehaviour
 {
+    public int coinCout;
+    public Text coinText;
     // Start is called before the first frame update
-    public float speed;
-    private Rigidbody2D rb;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        rb.velocity = Vector2.left * speed * Time.fixedDeltaTime;
+        coinText.text = coinCout.ToString();
     }
 }

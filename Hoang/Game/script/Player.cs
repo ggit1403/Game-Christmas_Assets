@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -7,18 +8,16 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int   HP ;
-    public int score;
+    
+    public int score = 0;
     public float moveSpeed; // toc do di chuyen den goc man hinh
     public GameObject pos;
     Rigidbody2D rb;
 
-   
-    
+    public CoinManager cm;
     void Start()
     {
-         rb = GetComponent<Rigidbody2D>();
-
+        rb = GetComponent<Rigidbody2D>();
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -27,9 +26,6 @@ public class Player : MonoBehaviour
         {
             pos = GameObject.FindWithTag("pos"); 
         }
-        
-
-
     }
     IEnumerator SwitchMap(float timeWait ,string nameMap)
     {
@@ -40,25 +36,17 @@ public class Player : MonoBehaviour
             this.gameObject.transform.position = pos.transform.position;
         }
        
-
-
     }
   
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("obstacle"))
-        {
-            HP -= 1;
-        }
-        else if (other.gameObject.CompareTag("items"))
+         if (other.gameObject.CompareTag("gift"))
         {
             score += 1;
         }
-        else if (other.gameObject.CompareTag("switchPos"))
+        else if (other.gameObject.CompareTag("reindeer"))
         { 
-            StartCoroutine(SwitchMap(0.2f,"onSky"));
-            
+            StartCoroutine(SwitchMap(0.2f,"onSky")); 
 
         }
         else if (other.gameObject.CompareTag("switchZone"))
@@ -66,8 +54,25 @@ public class Player : MonoBehaviour
             StartCoroutine(SwitchMap(0.2f, "onGround"));  // va cham voi diem chuyen Map
 
         }
-
+         
+        else if(other.gameObject.CompareTag("gift"))
+        {
+            other.gameObject.SetActive(false);
+            score += 1;
+        }
+         
+        /*
+        else if (other.gameObject.CompareTag("gift"))
+        {
+            HP -= 1;
+        }
+        */
     }
-   
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            cm.coinCout++;
+        }
+    }
 }

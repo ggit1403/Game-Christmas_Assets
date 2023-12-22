@@ -11,8 +11,6 @@ public class SpawnByDis : MonoBehaviour
     public float respawnDis ;
     public GameObject mapNext;
 
-
-
     private void Update()
     {
 
@@ -25,22 +23,15 @@ public class SpawnByDis : MonoBehaviour
         if (players == null)
         {
             players = GameObject.FindWithTag("Player");
-        
         }
-       
-
-
     }
 
     protected void Spawning()
     {
         if (currentDis > limitDis )
         {
-            transform.position = new Vector3(mapNext.transform.position.x + 10, transform.position.y, transform.position.z);
+            transform.position = new Vector3(mapNext.transform.position.x + 15, transform.position.y, transform.position.z);
         }
-
-  
-      
     }
 
     protected virtual void GetDistance()
@@ -48,8 +39,8 @@ public class SpawnByDis : MonoBehaviour
         if(players != null)
         {
             currentDis = players.transform.position.x - transform.position.x;
-        }
-       
+        } 
     }
 }
+
    

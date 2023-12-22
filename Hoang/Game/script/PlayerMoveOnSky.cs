@@ -19,7 +19,7 @@ public class PlayerMoveOnSky : MonoBehaviour
     public GameObject switchZone;
     public GameObject obPool;
     float currentTime;
-    float lerpedValue =3;
+
  
  
     void Start()
@@ -49,6 +49,7 @@ public class PlayerMoveOnSky : MonoBehaviour
         {
             obPool = GameObject.FindWithTag("obPool");
         }
+        /*
         if(obPool != null)
         {
             if (transform.position.y < obPool.transform.position.y)
@@ -57,18 +58,16 @@ public class PlayerMoveOnSky : MonoBehaviour
 
             }
         }
-
+        */
     }
     void FixedUpdate()
     {
         
         if (rb != null && canjump)
         {
-            cam.GetComponent<CamFollow>().offset = new Vector3(5.5f,3f,-10);
-            Bg.GetComponent<CamFollow>().offset = new Vector3(8, 5f,0);
+           
             rb.velocity = Vector2.right * speed * Time.fixedDeltaTime;
-            cam.GetComponent<CamFollow>().speed = 25;
-            Bg.GetComponent<CamFollow>().speed = 25f;
+           
             if (Input.GetKey(KeyCode.Space))
             {
               rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
@@ -77,51 +76,24 @@ public class PlayerMoveOnSky : MonoBehaviour
      
   
         if (rb != null && !canjump ){
-            cam.GetComponent<CamFollow>().offset =new Vector3(5.5f,-3.5f,-10);
-            Bg.GetComponent<CamFollow>().offset = new Vector3(8, 1, 0);
+        
         
             if (Input.GetKey(KeyCode.UpArrow) && rb.velocity.y < 0)
             {
                 rb.gravityScale = 0.1f; // nhan A de giam toc do roi
                 
-            }
+            }           
             else
             {
                 if (!switchMap)
                 {
                     rb.gravityScale = 1f;
                 }
-           }
-            if ( rb.velocity.y < 0)
-            {
-                cam.GetComponent<CamFollow>().speed = 0.8f;
-                Bg.GetComponent<CamFollow>().speed = 0.8f;
-             
             }
+           
         }
-        
-        if (switchMap)
-        {
-
-            rb.gravityScale = 0;
-            Bg.GetComponent<CamFollow>().enabled = false;
-            cam.GetComponent<CamFollow>().enabled = false;
-            
-        }
-
-   
-
-
-      
     }
-    float CamVertical()
-    {
-       lerpedValue += 1 * Time.fixedDeltaTime;
 
-        // Đảm bảo setUp không bao giờ nhỏ hơn -3
-         lerpedValue = Mathf.Min(lerpedValue,3);
-        return lerpedValue;
-    }
 
   
     private void OnCollisionStay2D(Collision2D collision)
@@ -134,7 +106,7 @@ public class PlayerMoveOnSky : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("cloud"))
+        if (collision.gameObject.CompareTag("cloud") )
         {
             canjump = false;
             

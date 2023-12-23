@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,12 +10,12 @@ public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    public int score = 0;
+    public int score;
     public float moveSpeed; // toc do di chuyen den goc man hinh
     public GameObject pos;
     Rigidbody2D rb;
 
-    public CoinManager cm;
+    public TextMeshPro coinText;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,7 +23,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       if(pos == null)
+        
+        if (pos == null)
         {
             pos = GameObject.FindWithTag("pos"); 
         }
@@ -43,24 +45,35 @@ public class Player : MonoBehaviour
          if (other.gameObject.CompareTag("gift"))
         {
             score += 1;
+            //Coin();
+            //coinText.text = score.ToString();
+            //Destroy(other.gameObject);
+
         }
+         /*
+        else if (other.gameObject.CompareTag("obstacle"))
+        {
+            HP -= 1;
+
+        }
+         */
         else if (other.gameObject.CompareTag("reindeer"))
         { 
-            StartCoroutine(SwitchMap(0.2f,"onSky")); 
+            StartCoroutine(SwitchMap(0.2f,"onSky"));
 
         }
         else if (other.gameObject.CompareTag("switchZone"))
         {
             StartCoroutine(SwitchMap(0.2f, "onGround"));  // va cham voi diem chuyen Map
-
+            
         }
-         
+         /*
         else if(other.gameObject.CompareTag("gift"))
         {
             other.gameObject.SetActive(false);
             score += 1;
         }
-         
+         */
         /*
         else if (other.gameObject.CompareTag("gift"))
         {
@@ -68,11 +81,10 @@ public class Player : MonoBehaviour
         }
         */
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    
+    void Coin()
     {
-        if (collision.gameObject.CompareTag("Coin"))
-        {
-            cm.coinCout++;
-        }
+        coinText.text = score.ToString();
     }
+    
 }

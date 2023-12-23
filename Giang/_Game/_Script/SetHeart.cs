@@ -17,36 +17,54 @@ public class SetHeart : MonoBehaviour
     }
 
     // Update is called once per frame
-     void FixedUpdate()
+     void Update()
     {
-        if (HP > 3)
+        /*if (HP > 3)
         {
             HP = 3;
         }
+        */
         switch (HP)
         {
             case 3:
+                {
                 heart1.gameObject.SetActive(true);
                 heart2.gameObject.SetActive(true);
                 heart3.gameObject.SetActive(true);
                 break;
+                }
+                
             case 2:
+                {
                 heart1.gameObject.SetActive(true);
                 heart2.gameObject.SetActive(true);
                 heart3.gameObject.SetActive(false);
                 break;
+                }
+                
             case 1:
+                {
                 heart1.gameObject.SetActive(true);
                 heart2.gameObject.SetActive(false);
                 heart3.gameObject.SetActive(false);
                 break;
+                }
+                
             case 0:
+                {
                 heart1.gameObject.SetActive(false);
                 heart2.gameObject.SetActive(false);
                 heart3.gameObject.SetActive(false);
                 gameOver.gameObject.SetActive(true);
                 Time.timeScale = 0;
                 break;
+                }
+
+            default:
+                {
+                break;
+                }
+                
         }
     }
 }

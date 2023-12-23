@@ -42,22 +42,19 @@ public class Player : MonoBehaviour
   
     private void OnTriggerEnter2D(Collider2D other)
     {
+        /*
          if (other.gameObject.CompareTag("gift"))
         {
             score += 1;
             //Coin();
-            //coinText.text = score.ToString();
-            //Destroy(other.gameObject);
-
         }
          /*
         else if (other.gameObject.CompareTag("obstacle"))
         {
             HP -= 1;
-
         }
          */
-        else if (other.gameObject.CompareTag("reindeer"))
+         if (other.gameObject.CompareTag("reindeer"))
         { 
             StartCoroutine(SwitchMap(0.2f,"onSky"));
 
@@ -67,13 +64,13 @@ public class Player : MonoBehaviour
             StartCoroutine(SwitchMap(0.2f, "onGround"));  // va cham voi diem chuyen Map
             
         }
-         /*
-        else if(other.gameObject.CompareTag("gift"))
+         if(other.gameObject.CompareTag("gift"))
         {
             other.gameObject.SetActive(false);
             score += 1;
+            Coin();
         }
-         */
+         
         /*
         else if (other.gameObject.CompareTag("gift"))
         {

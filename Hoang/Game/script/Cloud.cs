@@ -16,10 +16,6 @@ public class Cloud : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
     private void Update()
     {
          if(startPos == null)
@@ -27,11 +23,7 @@ public class Cloud : MonoBehaviour
             startPos = GameObject.FindWithTag("startPos");
         }
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
     // Update is called once per frame
     void FixedUpdate()
     {

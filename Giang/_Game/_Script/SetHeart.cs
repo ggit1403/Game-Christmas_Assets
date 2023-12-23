@@ -19,11 +19,11 @@ public class SetHeart : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
-        /*if (HP > 3)
+        if (HP > 3)
         {
             HP = 3;
         }
-        */
+        
         switch (HP)
         {
             case 3:
@@ -65,6 +65,13 @@ public class SetHeart : MonoBehaviour
                 break;
                 }
                 
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("obstacle"))
+        {
+            HP -= 1;
         }
     }
 }

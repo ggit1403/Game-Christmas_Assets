@@ -49,7 +49,6 @@ public class PlayerMoveOnSky : MonoBehaviour
         {
             obPool = GameObject.FindWithTag("obPool");
         }
-        /*
         if(obPool != null)
         {
             if (transform.position.y < obPool.transform.position.y)
@@ -58,7 +57,7 @@ public class PlayerMoveOnSky : MonoBehaviour
 
             }
         }
-        */
+
     }
     void FixedUpdate()
     {

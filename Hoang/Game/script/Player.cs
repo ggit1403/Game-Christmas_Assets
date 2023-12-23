@@ -18,7 +18,12 @@ public class Player : MonoBehaviour
     public TextMeshPro coinText;
     void Start()
     {
+<<<<<<< HEAD
         rb = GetComponent<Rigidbody2D>();
+=======
+         rb = GetComponent<Rigidbody2D>();
+      
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -53,8 +58,16 @@ public class Player : MonoBehaviour
         {
             HP -= 1;
         }
+<<<<<<< HEAD
          */
          if (other.gameObject.CompareTag("reindeer"))
+=======
+        else if (other.gameObject.CompareTag("items"))
+        {
+            score += 1;
+        }
+        else if (other.gameObject.CompareTag("switch"))
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
         { 
             StartCoroutine(SwitchMap(0.2f,"onSky"));
 
@@ -64,6 +77,7 @@ public class Player : MonoBehaviour
             StartCoroutine(SwitchMap(0.2f, "onGround"));  // va cham voi diem chuyen Map
             
         }
+<<<<<<< HEAD
          if(other.gameObject.CompareTag("gift"))
         {
             other.gameObject.SetActive(false);
@@ -72,11 +86,22 @@ public class Player : MonoBehaviour
         }
          
         /*
+=======
+        else if(other.gameObject.CompareTag("gift"))
+        {
+            other.gameObject.SetActive(false);
+            score += 1;
+        }
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
         else if (other.gameObject.CompareTag("gift"))
         {
             HP -= 1;
         }
+<<<<<<< HEAD
         */
+=======
+
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
     }
     
     void Coin()

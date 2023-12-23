@@ -8,7 +8,7 @@ public class SpawnByDis : MonoBehaviour
     public GameObject players;
     public float currentDis = 0f;
     public float limitDis;
-    public float respawnDis ;
+    public float respawnDis;
     public GameObject mapNext;
 
     private void Update()
@@ -30,7 +30,11 @@ public class SpawnByDis : MonoBehaviour
     {
         if (currentDis > limitDis )
         {
+<<<<<<< HEAD
             transform.position = new Vector3(mapNext.transform.position.x + 15, transform.position.y, transform.position.z);
+=======
+            transform.position = new Vector3(mapNext.transform.position.x + respawnDis, transform.position.y, transform.position.z);
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
         }
     }
 

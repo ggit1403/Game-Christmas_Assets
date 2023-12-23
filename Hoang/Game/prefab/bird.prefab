@@ -13,11 +13,18 @@ GameObject:
   - component: {fileID: 8448994542713690435}
   - component: {fileID: 8448994542713690432}
   - component: {fileID: -3781611072198983866}
+<<<<<<< HEAD
   - component: {fileID: 4034134357074716569}
   - component: {fileID: -8724939261197063738}
   m_Layer: 0
   m_Name: bird
   m_TagString: obstacle
+=======
+  - component: {fileID: -1114857873889920821}
+  m_Layer: 0
+  m_Name: bird
+  m_TagString: Untagged
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,8 +37,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8448994542713690433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 14.1425, y: 3.6835, z: 0}
   m_LocalScale: {x: -1.5704113, y: 0.7671526, z: 1}
+=======
+  m_LocalPosition: {x: 14.3573, y: 3.8, z: 0}
+  m_LocalScale: {x: -2, y: 1, z: 1}
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +89,11 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
+<<<<<<< HEAD
   m_SortingOrder: 10
+=======
+  m_SortingOrder: 0
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
   m_Sprite: {fileID: 21300000, guid: 924f5c7f48a123d41a311bd0f386a477, type: 3}
   m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_FlipX: 0
@@ -135,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9792a63dbac164695af12d9b5d0ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   limitdis: 20
 --- !u!114 &4034134357074716569
 MonoBehaviour:
@@ -150,6 +167,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!70 &-8724939261197063738
 CapsuleCollider2D:
+=======
+--- !u!61 &-1114857873889920821
+BoxCollider2D:
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,6 +182,22 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
+<<<<<<< HEAD
   m_Offset: {x: 0.22344768, y: -0.1737916}
   m_Size: {x: 0.369336, y: 0.5156327}
   m_Direction: 1
+=======
+  m_Offset: {x: 0, y: -0.15782773}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.68434453}
+  m_EdgeRadius: 0
+>>>>>>> 82b27060062294d10d370d1161be31f9ca2a3f80

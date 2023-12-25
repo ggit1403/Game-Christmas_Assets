@@ -1,77 +1,68 @@
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
+using UnityEngine.UI;
 
 public class SetHeart : MonoBehaviour
 {
-    public static int HP;
-    public GameObject heart1, heart2, heart3, gameOver;
+
     // Start is called before the first frame update
+    public int NumOfHearts;
+    public int Hp;
+    public UnityEngine.UI.Image[] hearts;
+    public Sprite fullHearts;
+    public Sprite emptyHearts;
+    public GameObject  gameOver;
+
     void Start()
     {
-        HP = 3;
-        heart1.gameObject.SetActive(true);
-        heart2.gameObject.SetActive(true);
-        heart3.gameObject.SetActive(true);
-        gameOver.gameObject.SetActive(false);
+
+       
     }
-
-    // Update is called once per frame
-     void Update()
+    private void Awake()
     {
-        if (HP > 3)
-        {
-            HP = 3;
-        }
-        
-        switch (HP)
-        {
-            case 3:
-                {
-                heart1.gameObject.SetActive(true);
-                heart2.gameObject.SetActive(true);
-                heart3.gameObject.SetActive(true);
-                break;
-                }
-                
-            case 2:
-                {
-                heart1.gameObject.SetActive(true);
-                heart2.gameObject.SetActive(true);
-                heart3.gameObject.SetActive(false);
-                break;
-                }
-                
-            case 1:
-                {
-                heart1.gameObject.SetActive(true);
-                heart2.gameObject.SetActive(false);
-                heart3.gameObject.SetActive(false);
-                break;
-                }
-                
-            case 0:
-                {
-                heart1.gameObject.SetActive(false);
-                heart2.gameObject.SetActive(false);
-                heart3.gameObject.SetActive(false);
-                gameOver.gameObject.SetActive(true);
-                Time.timeScale = 0;
-                break;
-                }
+       /* gameOver.gameObject.SetActive(false);*/
+    }
+    // Update is called once per frame
+    void Update()
+    {
 
-            default:
-                {
-                break;
-                }
-                
+        // Đảm bảo Hp không vượt quá NumOfHearts
+        if (Hp > NumOfHearts)
+        {
+            Hp = NumOfHearts;
+        }
+
+        // Đảm bảo Hp không dưới 0
+        else if (Hp == 0)
+        {
+            Hp = NumOfHearts;
+            gameOver.gameObject.SetActive(true);
+
+
+        }
+       
+     
+        // Đảm bảo số lượng fullHearts bằng giá trị của Hp
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < Hp)
+            {
+                hearts[i].sprite = fullHearts;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHearts;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("obstacle"))
         {
-            HP -= 1;
+            Hp -= 1;
         }
     }
 }

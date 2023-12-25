@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int   HP ;
+
     public int score;
     public float moveSpeed; // toc do di chuyen den goc man hinh
     public GameObject pos;
@@ -47,11 +47,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("obstacle"))
-        {
-            HP -= 1;
-        }
-        else if (other.gameObject.CompareTag("items"))
+        
+         if (other.gameObject.CompareTag("items"))
         {
             score += 1;
         }
